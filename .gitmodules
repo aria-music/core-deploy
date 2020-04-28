@@ -1,0 +1,6 @@
+[submodule "core"]
+	path = core
+	url = https://github.com/aria-music/aria-core.git
+[submodule "database"]
+	path = database
+	url = https://github.com/aria-music/aria-database.git

@@ -1,0 +1,39 @@
+version: "3"
+services:
+  router:
+    image: nginx:stable-alpine
+    volumes: 
+      - ./nginx:/etc/nginx:ro
+      - aria-run:/tmp/aria
+    ports:
+      - 5577:5577
+    restart: always
+
+  core:
+    build: ./core
+    volumes:
+      - ./core/config:/usr/src/aria-core/config
+      - aria-run:/tmp/aria
+    restart: on-failure:3
+  core-redis:
+    image: redis
+    restart: always
+
+  database:
+    build: ./database
+    volumes:
+      - ./database/config:/usr/src/aria-database/config:ro
+    restart: on-failure:3
+  database-postgres:
+    image: postgres:10
+    environment: 
+      POSTGRES_DB: ariadb
+      POSTGRES_USER: aria
+      POSTGRES:PASSWORD: music
+    volumes:
+      - aria-postgres-data:/var/lib/postgres/data
+    restart: always
+
+volumes:
+  aria-postgres-data:
+  aria-run:
