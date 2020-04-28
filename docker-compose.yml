@@ -29,7 +29,7 @@ services:
     environment: 
       POSTGRES_DB: ariadb
       POSTGRES_USER: aria
-      POSTGRES:PASSWORD: music
+      POSTGRES_PASSWORD: music
     volumes:
       - aria-postgres-data:/var/lib/postgres/data
     restart: always
