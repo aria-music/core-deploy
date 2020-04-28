@@ -12,7 +12,7 @@ services:
   core:
     build: ./core
     volumes:
-      - ./core/config:/usr/src/aria-core/config
+      - ./config/core:/usr/src/aria-core/config
       - aria-run:/tmp/aria
     restart: on-failure:3
   core-redis:
@@ -22,7 +22,7 @@ services:
   database:
     build: ./database
     volumes:
-      - ./database/config:/usr/src/aria-database/config:ro
+      - ./config/database:/usr/src/aria-database/config:ro
     restart: on-failure:3
   database-postgres:
     image: postgres:10
