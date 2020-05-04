@@ -21,6 +21,7 @@ jobs:
       - name: notify to Discord
         uses: sarisia/actions-status-discord@v1
         with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
           color: 0xffb46e
           job: ${{ github.event.action }} is updated!
           description: あとは任せた
